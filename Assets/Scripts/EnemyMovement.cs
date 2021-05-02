@@ -5,11 +5,9 @@ using UnityEngine;
 public class EnemyMovement : MonoBehaviour
 {
     public Transform player;
-    // private Rigidbody2D rb;
     public float speed;
     private bool moveRight = false;
     private float move = 1;
-    [Range(0, .3f)] [SerializeField] private float m_MovementSmoothing = .05f;  // How much to smooth out the movement
     private Vector3 m_Velocity = Vector3.zero;
 
     // void Start()
