@@ -46,8 +46,14 @@ public class EnemyMovement : MonoBehaviour
 
     public void Die()
     {
-        animator.SetBool("IsDead", true);
-        Destroy(gameObject);
+        if (animator.GetBool("IsDead"))
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            animator.SetBool("IsDead", true);
+        }
     }
 
     // void OnTriggerEnter2D(Collider2D trigg)
