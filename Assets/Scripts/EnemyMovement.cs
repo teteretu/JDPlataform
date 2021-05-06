@@ -6,14 +6,10 @@ public class EnemyMovement : MonoBehaviour
 {
     public Transform player;
     public float speed;
+    public Animator animator;
     private bool moveRight = false;
     private float move = 1;
     private Vector3 m_Velocity = Vector3.zero;
-
-    // void Start()
-    // {
-    //     rb = this.GetComponent<Rigidbody2D>();
-    // }
 
     // Update is called once per frame
     void FixedUpdate()
@@ -46,6 +42,12 @@ public class EnemyMovement : MonoBehaviour
             // ... flip the player.
             Flip();
         }
+    }
+
+    public void Die()
+    {
+        animator.SetBool("IsDead", true);
+        Destroy(gameObject);
     }
 
     // void OnTriggerEnter2D(Collider2D trigg)
