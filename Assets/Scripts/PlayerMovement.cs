@@ -46,6 +46,11 @@ public class PlayerMovement : MonoBehaviour
         animator.SetBool("IsJumping", false);
     }
 
+    public void Die()
+    {
+        Destroy(gameObject);
+    }
+    
     void FixedUpdate()
     {
         // Move our character

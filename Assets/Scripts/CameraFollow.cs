@@ -16,10 +16,13 @@ public class CameraFollow : MonoBehaviour
         // current camera position
         Vector3 temp = transform.position;
 
-        // set camera x position to player x position
-        temp.x = player.transform.position.x;
+        if (player != null)
+        {
+            // set camera x position to player x position
+            temp.x = player.transform.position.x;
+            transform.position = temp;
+        }
 
-        transform.position = temp;
 
     }
 }

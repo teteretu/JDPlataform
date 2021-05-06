@@ -16,7 +16,7 @@ public class EnemyMovement : MonoBehaviour
     {
 
         // go to right
-        if (player.position.x > transform.position.x)
+        if (player != null && player.position.x > transform.position.x)
         {
             move = 1;
             transform.Translate(2 * Time.deltaTime * speed, 0, 0);
@@ -56,13 +56,16 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    // void OnTriggerEnter2D(Collider2D trigg)
-    // {
-    //     if (trigg.gameObject.CompareTag("turn"))
-    //     {
-    //         moveRight = !moveRight;
-    //     }
-    // }
+    void OnTriggerEnter2D(Collider2D trigg)
+    {
+        PlayerMovement playerMovement = trigg.GetComponent<PlayerMovement>();
+        Debug.Log("trigger player entered: " + playerMovement);
+
+        if (playerMovement != null)
+        {
+            playerMovement.Die();
+        }
+    }
 
     private void Flip()
     {
