@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerMovement : MonoBehaviour
 {
@@ -54,7 +55,8 @@ public class PlayerMovement : MonoBehaviour
 
     public void Die()
     {
-        StartCoroutine(waiter());
+        if (!animator.GetBool("IsCroushing"))
+            StartCoroutine(waiter());
     }
 
     public IEnumerator waiter()
@@ -63,19 +65,8 @@ public class PlayerMovement : MonoBehaviour
 
         yield return new WaitForSeconds(1);
 
-        Debug.Log("life: " + playerLife);
-
-        /*if (playerLife > 0)
-        {*/
-        playerLife -= 1;
         animator.SetBool("IsCroushing", false);
-        player.transform.position = playerRespawnPoint.transform.position;
-        enemy.transform.position = enemyRespawnPoint.transform.position;
-        /*}
-        else
-        {
-            Destroy(gameObject);
-        }*/
+        SceneManager.LoadScene("Main");
     }
 
     void FixedUpdate()

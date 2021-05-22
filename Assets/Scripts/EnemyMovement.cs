@@ -4,14 +4,13 @@ using UnityEngine;
 
 public class EnemyMovement : MonoBehaviour
 {
-    public float speed;
     public Animator animator;
     private bool moveRight = false;
     private float move = 1;
     private Vector3 m_Velocity = Vector3.zero;
     private int enemyLife = 3;
     private Transform target = null;
-
+    private float speed = 0f;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -45,14 +44,14 @@ public class EnemyMovement : MonoBehaviour
         }
     }
 
-    public void SetTarget(GameObject newTarget)
+    public void SetTarget(GameObject newTarget, float speed)
     {
         target = newTarget.transform;
+        this.speed = speed;
     }
 
     public void Die()
     {
-        Debug.Log("bool? " + animator.GetBool("IsDead"));
         if (animator.GetBool("IsDead")) {
             Destroy(gameObject);
         } else {
@@ -64,10 +63,10 @@ public class EnemyMovement : MonoBehaviour
     void OnTriggerEnter2D(Collider2D trigg)
     {
         PlayerMovement playerMovement = trigg.GetComponent<PlayerMovement>();
-        Debug.Log("trigger player entered: " + playerMovement);
 
         if (playerMovement != null)
         {
+            Destroy(gameObject);
             playerMovement.Die();
         }
     }
