@@ -5,12 +5,12 @@ using UnityEngine;
 public class Bullet : MonoBehaviour
 {
     public float speed = 20f;
-    public Rigidbody2D rigidbody;
+    public Rigidbody2D hide;
 
     // Start is called before the first frame update
     void Start()
     {
-        rigidbody.velocity = transform.right * speed;
+        hide.velocity = transform.right * speed;
     }
 
     void OnTriggerEnter2D(Collider2D hitInfo)

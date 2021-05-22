@@ -18,7 +18,6 @@ public class PlayerMovement : MonoBehaviour
 
     public Transform player;
     public Transform playerRespawnPoint;
-    private int playerLife = 2;
     public Transform enemy;
     public Transform enemyRespawnPoint;
 
