@@ -903,6 +903,7 @@ GameObject:
   - component: {fileID: 136467409}
   - component: {fileID: 136467415}
   - component: {fileID: 136467414}
+  - component: {fileID: 136467413}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -1019,6 +1020,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &136467413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 136467408}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5e71b41fab8252f4085294785ec301ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyRespawnPoint: {fileID: 328114874}
+  enemy: {fileID: 136467408}
 --- !u!114 &136467414
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1034,6 +1049,7 @@ MonoBehaviour:
   player: {fileID: 711547976}
   speed: 1
   animator: {fileID: 136467410}
+  enemyRespawnPoint: {fileID: 328114874}
 --- !u!58 &136467415
 CircleCollider2D:
   m_ObjectHideFlags: 0
@@ -1976,7 +1992,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 301072278}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.078, y: -0.083, z: 0}
+  m_LocalPosition: {x: 0.071, y: -0.058, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 711547976}
@@ -1997,6 +2013,66 @@ MonoBehaviour:
   firePoint: {fileID: 301072279}
   bulletPrefab: {fileID: 8014024095841848826, guid: 8cf135ab03c3b4fc89e287ffc18325c5,
     type: 3}
+--- !u!1 &313515330
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 313515331}
+  m_Layer: 0
+  m_Name: PlayerRespawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &313515331
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 313515330}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.19, y: -2.13, z: -0.72265625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &328114873
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 328114874}
+  m_Layer: 0
+  m_Name: EnemyRespawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &328114874
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 328114873}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 19.16, y: 1.1, z: -0.72265625}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -2385,6 +2461,10 @@ MonoBehaviour:
   controller: {fileID: 711547973}
   animator: {fileID: 711547974}
   runSpeed: 40
+  player: {fileID: 711547976}
+  playerRespawnPoint: {fileID: 313515331}
+  enemy: {fileID: 136467412}
+  enemyRespawnPoint: {fileID: 328114874}
 --- !u!58 &711547980
 CircleCollider2D:
   m_ObjectHideFlags: 0

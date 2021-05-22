@@ -10,6 +10,8 @@ public class EnemyMovement : MonoBehaviour
     private bool moveRight = false;
     private float move = 1;
     private Vector3 m_Velocity = Vector3.zero;
+    public Transform enemyRespawnPoint;
+    private int enemyLife = 3;
 
     // Update is called once per frame
     void FixedUpdate()
@@ -46,14 +48,24 @@ public class EnemyMovement : MonoBehaviour
 
     public void Die()
     {
-        if (animator.GetBool("IsDead"))
+        StartCoroutine(waiter());
+    }
+
+    public IEnumerator waiter()
+    {
+        animator.SetBool("IsDead", true);
+
+        yield return new WaitForSeconds(5);
+
+        /*if (enemyLife > 0)
+        {*/
+            enemyLife -= 1;
+            animator.SetBool("IsDead", false);
+            gameObject.transform.position = enemyRespawnPoint.transform.position;
+        /*} else
         {
             Destroy(gameObject);
-        }
-        else
-        {
-            animator.SetBool("IsDead", true);
-        }
+        }*/
     }
 
     void OnTriggerEnter2D(Collider2D trigg)

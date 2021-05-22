@@ -15,6 +15,12 @@ public class PlayerMovement : MonoBehaviour
     bool jump = false;
     bool crouch = false;
 
+    public Transform player;
+    public Transform playerRespawnPoint;
+    private int playerLife = 2;
+    public Transform enemy;
+    public Transform enemyRespawnPoint;
+
     // Update is called once per frame
     void Update()
     {
@@ -48,9 +54,30 @@ public class PlayerMovement : MonoBehaviour
 
     public void Die()
     {
-        Destroy(gameObject);
+        StartCoroutine(waiter());
     }
-    
+
+    public IEnumerator waiter()
+    {
+        animator.SetBool("IsCroushing", true);
+
+        yield return new WaitForSeconds(1);
+
+        Debug.Log("life: " + playerLife);
+
+        /*if (playerLife > 0)
+        {*/
+        playerLife -= 1;
+        animator.SetBool("IsCroushing", false);
+        player.transform.position = playerRespawnPoint.transform.position;
+        enemy.transform.position = enemyRespawnPoint.transform.position;
+        /*}
+        else
+        {
+            Destroy(gameObject);
+        }*/
+    }
+
     void FixedUpdate()
     {
         // Move our character

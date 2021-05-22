@@ -16,12 +16,13 @@ public class Bullet : MonoBehaviour
     void OnTriggerEnter2D(Collider2D hitInfo)
     {
         EnemyMovement enemy = hitInfo.GetComponent<EnemyMovement>();
-        Debug.Log("trigger entered: " + enemy);
 
         if (enemy != null)
         {
             enemy.Die();
             Destroy(gameObject);
+            // gameObject.transform.position = enemyRespawnPoint.transform.position;
+
         }
     }
 
