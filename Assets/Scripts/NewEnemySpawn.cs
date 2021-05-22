@@ -5,24 +5,18 @@ using UnityEngine;
 public class NewEnemySpawn : MonoBehaviour
 {
     public Transform enemyRespawnPoint;
-    public GameObject enemy;
+    public EnemyMovement enemy;
+    public GameObject player;
 
     // Start is called before the first frame update
     void Start()
     {
-        StartCoroutine(waiter());
+        InvokeRepeating("repeater", 1f, 3f);
     }
 
-    // Update is called once per frame
-    void Update()
+    public void repeater()
     {
-        
-    }
-
-    public IEnumerator waiter()
-    {
-        yield return new WaitForSeconds(10);
-
-        Instantiate(enemy, enemyRespawnPoint.position, enemyRespawnPoint.rotation);
+        Debug.Log("call instantiate");
+        (Instantiate(enemy, enemyRespawnPoint.position, enemyRespawnPoint.rotation)).SetTarget(player);
     }
 }
