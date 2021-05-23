@@ -65,7 +65,7 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         animator.SetBool("IsCroushing", false);
-        SceneManager.LoadScene("Main");
+        SceneManager.LoadScene("GameOver");
     }
 
     void FixedUpdate()

@@ -5,7 +5,14 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     private bool paused = false;
+    public Transform coin;
+    public Transform coinRespawnPoint;
 
+
+    void Start()
+    {
+        Instantiate(coin, coinRespawnPoint.position, coinRespawnPoint.rotation);
+    }
     // Update is called once per frame
     void Update()
     {
